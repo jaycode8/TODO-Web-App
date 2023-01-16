@@ -1,0 +1,4 @@
+/node_modules
+# = offline files for development
+/public/icons
+.env

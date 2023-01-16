@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <!-- <link rel="stylesheet" href="../icons/css/all.min.css">
+    <link rel="stylesheet" href="../icons/css/fontawesome.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="adminProfile" onclick="makueni()" style="background: url('../uploads/<%= admin[0].profile_pic %>')"></div>
+        <section class="user-modal">
+            <i class="fas fa-times close" onclick="makueni()"></i>
+            <div class="Profile" style="background: url('../uploads/<%= admin[0].profile_pic %>')"></div>
+            <div class="user-details">
+                <h2>
+                    <%= admin[0].userName %>
+                </h2>
+                <p>
+                    <i class="fas fa-mobile-android"></i>
+                    <%= admin[0].phone %>
+                </p>
+                <div class="user-modal-btns">
+                    <a href="/editUser/<%= admin[0].user_id %>" id="editinfo">
+                        Edit Info
+                        <i class="fas fa-user-pen"></i>
+                    </a>
+                    <a href="/logout/<%= admin[0].user_id %>" id="logout">
+                        log out
+                        <i class="fas fa-right-to-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <div class="madoido"></div>
+        <section class="stats">
+            <div class="no-users">
+                <h3>users</h3>
+                <h1><%= users.length %></h1>
+            </div>
+            <div class="no-todos">
+                <h3>Total Todos</h3>
+                <h1><%= data.length %></h1>
+            </div>
+        </section>
+        <div class="upper">
+            <div class="users">
+                <div class="usermodal">
+                    <i class="fas fa-times close" id="close" onclick="lumumba2()"></i>
+                    <span class="profile">
+                        <div class="profilepic">
+                            <div class="theimage">
+                                <img src="../uploads/myFile-1669054357321.jpeg" alt="">
+                            </div>
+                        </div>
+                        <div class="profileDetails">
+                            <h2></h2>
+                            <p>
+                                <i class="fas fa-mobile-android"></i>
+                            </p>
+                            <p class="passw"></p>
+                        </div>
+                        <span id="trash"></span>
+                    </span>
+                    <span class="todosList"></span>
+                </div>
+                <h3>Users list</h3>
+                <div class="section">
+                    <% users.map(user =>{ %>
+                        <section onclick="lumumba('<%= user.user_id %>,<%= user.userName %>,<%= user.phone %>,<%= user.profile_pic %>,<%= user.userPassword %>,<%= admin[0].user_id %>')">
+                            <div class="img">
+                                <span style="background: url('../uploads/<%= user.profile_pic %>');"></span>
+                            </div>
+                            <div class="name">
+                                <%= user.userName %>
+                            </div>
+                            <div class="trash2">
+                                <a href="/deleteUser/<%= admin[0].user_id %>/<%= user.user_id %>"><i class="fas fa-trash-alt" id="trash2"></i></a>
+                            </div>
+                        </section>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="allTodos">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>Todo</th>
+                        <th>DOC</th>
+                        <th>status</th>
+                        <th>owner</th>
+                        <th></th>
+                    </tr>
+                    <% data.map(todo =>{ %>
+                        <tr>
+                            <td><%= todo.id %></td>
+                            <td><%= todo.todoname %></td>
+                            <td><%= todo.dateOfCreation %></td>
+                            <td><%= todo.todoStatus %></td>
+                            <td><%= todo.userName %></td>
+                            <td>
+                                <form action="/del/<%= todo.id %>/<%= admin[0].user_id  %>" method="get">
+                                    <button type="submit" id="delbtn"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </div>
+        <%-include('./partials/footer') %>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

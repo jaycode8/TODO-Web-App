@@ -1,0 +1,105 @@
+@font-face{
+    src: url('../Fonts/Handlee-Regular.ttf');
+    font-family: Handlee;
+}
+:root{
+    --text: #fff;
+    --body-bg: #222;
+    --accent-color: #ff6655;
+	--secondary-color: #c471f5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Handlee;
+    text-decoration: none;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    background: var(--body-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.main h3{
+    position: absolute;
+    top: 7rem;
+    font-size: 27px;
+    color: var(--text);
+}
+.main form{
+    width: 50%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 1.5s ease;
+}
+form input{
+    width: 100%;
+    font-size: 17px;
+    outline: none;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--text);
+    color: var(--text);
+    padding: .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+form button{
+    padding: .1rem 1rem;
+    outline: none;
+    border: 1px solid var(--text);
+    border-radius: 3px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--accent-color);
+}
+.main a{
+    position: absolute;
+    top: 1rem;
+	right: 2rem;
+}
+.main a i{
+	color: var(--accent-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.main a i:hover {
+	color: var(--secondary-color);
+}
+
+
+/* ===================== responsiveness ======================= */
+@media only screen and (max-width:700px){
+    .main form{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width:450px){
+    .main form{
+        width: 80%;
+    }
+    .main h3{
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .main form{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width:350px){
+    .main form{
+        width: 90%;
+    }
+}

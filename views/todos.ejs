@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../css/todos.css">
+    <!-- <link rel="stylesheet" href="../icons/css/all.min.css">
+    <link rel="stylesheet" href="../icons/css/fontawesome.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <form action="" id="search-form">
+            <input type="search" placeholder="Search here..." name="input-box" id="search-box" class="input-box">
+            <label for="search-box" class="fas fa-search"></label>
+            <i class="fas fa-times close" id="close"></i>
+        </form>
+        <form action="/createTodo/<%= user %>" method="post" id="new-task-form" autocomplete="off">
+            <input type="text" placeholder="Add a new task" name="newTodo" id="new-task-box" class="input-box" required>
+            <button type="submit" class="submitBtn">
+                <label for="new-task-box" class="fas fa-plus"></label>
+            </button>
+            <i class="fas fa-times close" id="new-task-close"></i>
+        </form>
+        <nav>
+            <a href="/all/<%= user %>" title="All" id="all-btn" class="active">
+                <i class="fas fa-list"></i>
+                <p>all</p>
+            </a>
+            <a href="/pending/<%= user %>" title="Pending">
+                <i class="fas fa-indent"></i>
+                <p>pending</p>
+            </a>
+            <a href="/doneTasks/<%= user %>" title="Completed">
+                <i class="fas fa-list-check"></i>
+                <p>completed</p>
+            </a>
+            <a title="Search" id="search-btn">
+                <i class="fas fa-search"></i>
+                <p>search</p>
+            </a>
+            <a title="Profile" class="profile-cover">
+                <i class="fas fa-id-card-clip"></i>
+                <p>profile</p>
+            </a>
+        </nav>
+        <div class="main">
+            <section class="user-modal">
+                <h3 class="head">profile</h3>
+                <div class="profile" style="background: url('../uploads/<%= userInfo[0].profile_pic %>');"></div>
+                <div class="user-details">
+                    <h2>
+                        <%= userInfo[0].userName %>
+                    </h2>
+                    <p>
+                        <i class="fas fa-mobile-android"></i>
+                        <%= userInfo[0].phone %>
+                    </p>
+                    <div class="user-modal-btns">
+                        <a href="/editUser/<%= user %>" id="editinfo">
+                            Edit Info
+                            <i class="fas fa-user-pen"></i>
+                        </a>
+                        <a href="/logout/<%= user %>" id="logout">
+                            log out
+                            <i class="fas fa-right-to-bracket"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="todos">
+                <div class="top-bar">
+                    <h3 class="head"><%= head %></h3>
+                    <div class="btns-panel">
+                        <a href="#" title="Sort"><i class="fas fa-sort"></i></a>
+                        <a href="#" id="new-task-btn">Add New</a>
+                    </div>
+                </div>
+                <ul class="task-section">
+
+                    <% data.map((todo) =>{ %>
+                        <li class="task">
+                            <label for='<%= todo.id %>' class="<%= todo.todoStatus %>">
+                                <input type="checkbox" id="<%= todo.id %>" onclick="updateTodo('<%= todo.id %>',this)"/>
+                                <p>
+                                    <%= todo.todoname %>
+                                </p>
+                            </label>
+                            <div class="settings">
+                                <i class="fas fa-ellipsis-h" onclick="showMenu(this)"></i>
+                                <ul class="task-menu">
+                                    <li>
+                                        <form action="/<%= todo.id %>" method="get">
+                                            <button type="submit" id="editbtn"><i class="fas fa-pen"></i>Edit</button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/del/<%= todo.id %>/<%= todo.usersID %>" method="get">
+                                            <button type="submit" id="delbtn"><i class="fas fa-trash-alt"></i>Delete</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    <% }) %>
+
+                </ul>
+            </section>
+        </div>
+    </div>
+    <%-include('./partials/footer') %>
+    <script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+    <script src="../js/todos.js"></script>
+    <script src="../js/jay.js"></script>
+</body>
+</html>

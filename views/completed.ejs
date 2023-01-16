@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../css/todos.css">
+    <!-- <link rel="stylesheet" href="../icons/css/all.min.css">
+    <link rel="stylesheet" href="../icons/css/fontawesome.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <form action="" id="search-form">
+            <input type="search" placeholder="Search here..." name="input-box" id="search-box" class="input-box">
+            <label for="search-box" class="fas fa-search"></label>
+            <i class="fas fa-times close" id="close"></i>
+        </form>
+        <nav>
+            <a href="/all/<%= user %>" title="All" id="all-btn">
+                <i class="fas fa-list"></i>
+                <p>all</p>
+            </a>
+            <a href="/pending/<%= user %>" title="Pending">
+                <i class="fas fa-indent"></i>
+                <p>pending</p>
+            </a>
+            <a href="/doneTasks/<%= user %>" title="Completed" class="active">
+                <i class="fas fa-list-check"></i>
+                <p>completed</p>
+            </a>
+            <a title="Search" id="search-btn">
+                <i class="fas fa-search"></i>
+                <p>search</p>
+            </a>
+        </nav>
+        <div class="main">
+            <section class="todos">
+                <div class="top-bar">
+                    <h3 class="head"><%= head %></h3>
+                    <div class="btns-panel">
+                        <a href="#" title="Sort"><i class="fas fa-sort"></i></a>
+                    </div>
+                </div>
+                <ul class="task-section">
+
+                    <% data.map((todo) =>{ %>
+                        <li class="task">
+                            <label for='<%= todo.id %>' class="completed">
+                                <input type="checkbox" id='<%= todo.id %>' onclick="updateTodo('<%= todo.id %>',this)"/>
+                                <p>
+                                    <%= todo.todoname %>
+                                </p>
+                            </label>
+                            <div class="settings">
+                                <i class="fas fa-ellipsis-h" onclick="showMenu(this)"></i>
+                                <ul class="task-menu">
+                                    <li>
+                                        <form action="/del/<%= todo.id %>/<%= todo.usersID %>" method="get">
+                                            <button type="submit" id="delbtn"><i class="fas fa-trash-alt"></i>Delete</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    <% }) %>
+
+                </ul>
+            </section>
+        </div>
+    </div>
+    <%-include('./partials/footer') %>
+    <script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+    <script src="../js/todos.js"></script>
+    <script src="../js/jay.js"></script>
+</body>
+</html>

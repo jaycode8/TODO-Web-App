@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create account</title>
+    <link rel="stylesheet" href="../css/editUser.css">
+</head>
+<body>
+    <div class="cont">
+        <div class="box">
+            <div class="cards">
+                <div class="card1">
+                    <form action="/updateUser/<%= user[0].user_id %>" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <h2>Update your information</h2>
+                        <section>
+                            <img src="../uploads/<%= user[0].profile_pic %>" id="img" name="img" alt="<%= user[0].userName %>">
+                            <input type="file" name="myFile" id="file">
+                            <label for="file">img</label>
+                        </section>
+                        <% if (user[0].userName=="ADMIN"){ %>
+                            <input type="text" name="userName" value="<%= user[0].userName %>" disabled id="userDisabled">
+                        <% } else { %>
+                            <input type="text" name="userName" value="<%= user[0].userName %>" required>
+                        <% } %>
+                        <input type="tel" name="phone_number" value="<%= user[0].phone %>" required>
+                        <input type="password" name="passwords" value="<%= user[0].userPassword %>" required>
+                        <div>
+                            <input type="submit" value="Update">
+                            <% if (user[0].userName=="ADMIN"){ %>
+                                <a href="/admin/<%= user[0].user_id %>">back</a>
+                            <% } else { %>
+                                <a href="/all/<%= user[0].user_id %>">Back</a>
+                            <% } %>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/reg.js"></script>
+</body>
+</html>

@@ -1,0 +1,622 @@
+:root {
+	--accent-color: #ff6655;
+	--secondary-color: #c471f5;
+	--body-background: #222;
+	--text-color: #fff;
+	--section-background: #333;
+}
+@font-face{
+    src: url('../Fonts/Handlee-Regular.ttf');
+    font-family: Handlee;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Handlee;
+}
+body{
+    overflow: hidden;
+}
+.container {
+	height: 93vh;
+	width: 100%;
+	background-color: var(--body-background);
+	color: var(--text-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    overflow: hidden !important;
+    position: relative;
+}
+nav {
+	width: 50vw;
+	height: 40px;
+	position: absolute;
+	left: 50vw;
+	bottom: 0.5rem;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	transform: translate(-50%);
+}
+nav a {
+	color: var(--text-color);
+	text-transform: uppercase;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.4rem;
+	padding: 5px 20px;
+    cursor: pointer;
+	transition: all .3s;
+}
+nav a:hover,
+nav a.active {
+	color: var(--accent-color);
+	transform: scale(1.2);
+}
+nav a p {
+	font-size: 0.8rem;
+}
+section {
+	background-color: var(--section-background);
+	height: 80vh;
+	width: 70vw;
+	border-radius: 20px;
+	padding: 0.5rem;
+	overflow-y: scroll;
+	box-shadow: 0 0 5px var(--secondary-color);
+	margin-bottom: 2rem;
+}
+section::-webkit-scrollbar {
+    display: none;
+}
+section .top-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	background-color: var(--section-background);
+	padding: 0 1rem;
+    z-index: 1;
+}
+section .head,
+.btns-panel {
+	text-transform: uppercase;
+	color: var(--secondary-color);
+	padding: 12px 15px;
+	font-size: 1.8rem;
+	font-weight: 2500;
+}
+section .btns-panel {
+	background-color: unset;
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+}
+section .btns-panel a {
+	color: var(--text-color);
+	text-decoration: none;
+	margin: 0 10px;
+}
+.btns-panel a:nth-child(2) {
+	background-color: var(--accent-color);
+	height: fit-content;
+	width: fit-content;
+	padding: 8px 15px;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+.user-modal {
+	height: 60vh;
+	width: 60vw;
+	grid-template-columns: repeat(2, 1fr);
+	padding: 1rem;
+	display: none;
+}
+.user-modal .head {
+	position: fixed;
+	color: var(--text-color);
+	background-color: var(--secondary-color);
+	height: fit-content;
+	width: fit-content;
+	border-radius: 10px;
+	font-size: 1.5rem;
+	font-weight: bolder;
+	top: 14vh;
+	left: 24vw;
+}
+.user-modal .profile{
+	grid-column: 1 / 2;
+	height: 100%;
+	border-radius: 10px;
+    background-position: center !important;
+    background-size: cover !important;
+}
+.user-modal .user-details {
+	grid-column: 2 / 3;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.user-details h2 {
+	text-transform: uppercase;
+	font-size: 2.2rem;
+	text-align: center;
+	margin: 1rem;
+}
+.user-details p {
+	font-size: 1.2rem;
+	margin: 1rem;
+}
+.user-modal-btns {
+	margin: 2rem 0;
+	display: flex;
+	gap: 1.3rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.user-modal-btns a {
+	color: var(--text-color);
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 7px 16px;
+	background-color: #222;
+	border-radius: 10px;
+}
+.user-modal-close {
+	background-color: var(--accent-color);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	position: relative;
+	top: -79%;
+	right: -48%;
+	cursor: pointer;
+}
+.todos {
+	padding: 0 6rem;
+}
+.todos.inactive {
+	display: none;
+}
+.task-section {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: .3rem;
+    overflow: hidden !important;
+}
+.task {
+	display: flex;
+	justify-content: space-between;
+	background-color: #222;
+	align-items: center;
+	padding: .5rem 10px;
+	box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    position: relative;
+}
+.task:last-child {
+	margin-bottom: 4rem;
+}
+.task label {
+	display: flex;
+}
+.task label input {
+	margin-right: 15px;
+}
+.task label input,
+.task label p {
+    cursor: pointer;
+}
+.settings i{
+    cursor: pointer;
+}
+.settings .task-menu{
+    position: absolute;
+    right: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    z-index: 2;
+    border-radius: 6px;
+    transform: scale(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform-origin: top right;
+    transition: all 0.8s ease;
+}
+.settings .task-menu.mwaani{
+    transform: scale(1);
+    right: 10px;
+}
+.task-menu li{
+    height: 35px;
+    width: 80px;
+    list-style: none;
+}
+.task-menu li form{
+    font-size: 14px;
+    border-radius: 5px;
+}
+.task-menu li form,.task-menu li form button[type='submit']{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.task-menu li form button[type='submit']{
+    outline: none;
+    border: 0;
+    background: transparent;
+    font-size: 15px;
+    transition: all .7s;
+}
+.task-menu li form button[type='submit']:hover{
+    background: var(--section-background);
+    color: #fff;
+}
+.task-menu li form #editbtn{
+    border-radius: 5px 5px 0px 0px;
+}
+.task-menu li form #delbtn{
+    border-radius: 0px 0px 5px 5px;
+}
+.task-menu li i{
+    margin-left: 5px;
+    margin-right: 8px;
+    font-size: 12px;
+}
+.completed p {
+    text-decoration: line-through;
+	font-style: italic;
+	color: rgba(126, 123, 123, 0.918);
+}
+.checked {
+    text-decoration: line-through;
+    opacity: .5;
+    font-style: italic;
+}
+#search-form,
+#new-task-form {
+    position: fixed;
+    top: -110%;
+	left: 0; 
+    height: 100%;
+	width: 100%;
+    z-index: 100;
+    background:rgba(0, 0, 0, .9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+	transition: all 0.5s;
+}
+#search-form.active,
+#new-task-form.active {
+    top: 0;
+}
+.input-box {
+    width: 50rem;
+	border: none;
+	outline: none;
+    border-bottom: .1rem solid #fff;
+    padding: .5rem 0;
+    color: #fff;
+    font-size: 1.3rem;
+    background: none;
+}
+.input-box::placeholder {
+    color: rgba(238, 238, 238, 0.842);
+}
+.input-box::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+	appearance: none;
+}
+#search-form label,
+#new-task-form label {
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+#search-form label:hover,
+#new-task-form label:hover {
+    color: var(--accent-color);
+}
+.close {
+    position: absolute;
+	color: var(--accent-color);
+    cursor: pointer;
+    top: 1rem;
+	right: 2rem;
+    font-size: 1.5rem;
+}
+.close:hover {
+	color: var(--secondary-color);
+}
+footer{
+    width: 100%;
+    height: 7vh;
+    background: #121212;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+footer span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer span a{
+    margin: 1%;
+    text-decoration: none;
+    transition: all 1s ease;
+    color: #fff;
+}
+footer span a:hover{
+    color: #f2c633;
+}
+small{
+    font-size: unset;
+    margin-left: 5px;
+}
+.submitBtn{
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+
+
+
+/*======================================= responsiveness =========================================================== */
+
+@media only screen and (max-width:1100px){
+    .user-modal .head {
+        font-size: 1.2rem;
+        padding: 4px 10px;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .todos{
+        padding: 0 5rem;
+    }
+    .user-modal-btns {
+        gap: unset;
+        
+    }
+    .user-modal-btns a{
+        font-size: .9rem;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width:950px){
+    .user-details h2{
+        margin: .5rem;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width:850px) {
+	html {
+		font-size: 90%;
+	}
+
+	nav {
+		width: 70vw;
+	}
+
+	section{
+		width: 75vw;
+	}
+
+	section .head,
+	.btns-panel {
+		padding: 10px;
+		font-size: 1.5rem;
+		font-weight: 2000;
+	}
+
+	.todos {
+		padding: 0 4.5rem;
+	}
+}
+
+@media only screen and (max-width:810px){
+    .user-modal{
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width:780px) {
+    .todos{
+		padding: 0 4rem;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .todos{
+        padding: 0 2rem;
+    }
+}
+
+@media only screen and (max-width:600px) {
+	section{
+		width: 80vw;
+	}
+    .user-modal{
+        width: 80vw;
+        /* height: 50vh; */
+    }
+}
+
+@media only screen and (max-width:550px){
+    section{
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width:500px) {
+	html {
+		font-size: 80%;
+	}
+	nav {
+		width: 80vw;
+	}
+	section{
+		width: 85vw;
+	}
+	section .head,
+	.btns-panel {
+		padding: 7px;
+		font-size: 1.2rem;
+		font-weight: 1000;
+	}
+    .todos{
+        padding: 0 1.5rem;
+    }
+    .btns-panel a:nth-child(1){
+        font-size: 1.3rem;
+    }
+    .btns-panel a:nth-child(2){
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        border-radius: 0;
+    }
+    .close{
+        font-size: 1.5rem;
+    }
+    #search-form label,
+    #new-task-form label{
+        font-size: 1.5rem;
+    }
+    .input-box{
+        font-size: 1.3rem;
+        padding: 0.5rem;
+    }
+    .user-modal{
+        width: 90vw;
+        height: 50vh;
+        position: relative;
+    }
+    .user-modal .head {
+        border-radius: 5px;
+        font-size: 1.0rem;
+        font-weight: bolder;
+        top: 21vh;
+        padding: 5px;
+    }
+    .user-details h2 {
+        font-size: 2.0rem;
+        margin: .5rem;
+    }
+    .user-details p {
+        font-size: 1.2rem;
+        margin: .5rem;
+    }
+    .user-modal-btns {
+        gap: .3rem;
+        width: 100%;
+    }
+    .user-modal-btns a {
+        padding: 8px 5px;
+        border-radius: 5px;
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (max-width:450px){
+
+}
+
+@media only screen and (max-width:400px){
+    nav{
+        width: 70vw;
+    }
+    nav a {
+        font-size: 1.0rem;
+    }
+    nav a p{
+        font-size: 0.5rem;
+    }
+    section{
+		width: 90vw;
+	}
+    .user-modal{
+        height: 40vh;
+        border-radius: 5px;
+        padding: .5rem;
+        grid-template-columns: 40% 60%;
+    }
+    .user-modal .head {
+        border-radius: 3px;
+        font-size: .7rem;
+        top: 26vh;
+        padding: 4px;
+    }
+    .user-details h2 {
+        font-size: 1.5rem;
+    }
+    .user-details p {
+        font-size: .8rem;
+    }
+    .user-modal-btns a {
+        padding: 8px 10px;
+        font-size: .7rem;
+    }
+    .task-menu li form button[type='submit']{
+        font-size: 12px !important;
+    }
+    .task-menu li i{
+        font-size: 10px;
+    }
+    .task-menu li{
+        height: 28px;
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width:350px) {
+	nav a{
+        padding: 5px 10px;
+    }
+    .user-modal{
+        grid-template-columns: 45% 55%;
+        padding: 0;
+    }
+    .user-modal .head {
+        left: 75vw;
+    }
+}
+
+@media only screen and (max-width: 305px){
+    .user-modal{
+        height: 30vh;
+    }
+    .user-details h2 {
+        font-size: 1.0rem;
+    }
+    .user-details p,
+    .user-modal-btns a {
+        font-size: .5rem;
+    }
+    .user-modal .head{
+        top: 31vh;
+    }
+}

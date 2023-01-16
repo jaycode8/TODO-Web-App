@@ -1,0 +1,676 @@
+:root {
+	--accent-color: #ff6655;
+	--secondary-color: #c471f5;
+	--body-background: #222;
+	--text-color: #fff;
+	--section-background: #333;
+}
+@font-face{
+    src: url('../Fonts/Handlee-Regular.ttf');
+    font-family: Handlee;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Handlee;
+}
+.container{
+    height: 100vh;
+}
+.madoido{
+    width: 100%;
+    position: fixed;
+    height: 50vh;
+    background: linear-gradient(to right top, #d16ba5, #c777b9,#ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    z-index: -1;
+}
+.container,
+.container .upper,
+.users .section,
+.section section .img,
+.section section .name,
+.img span img,
+.profile .profilepic,
+.profile .profileDetails,
+.second .allTodos{
+    width: 100%;
+}
+.container .upper{
+    height: 30vh;
+}
+.container .upper,
+.section section,
+.section section .name,
+.section section .img,
+.img span,
+.usermodal .profile,
+.profile .profileDetails,
+.profile .profilepic,
+.todosList,
+.users .section,
+.container .second,
+.second .allTodos,
+.profile .profilepic .theimage,
+.container .adminProfile,
+.stats,
+.stats .no-users,
+.stats .no-todos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upper .users,
+.second .allTodos{
+    width: 80%;
+    height: auto;
+    margin-top: 20%;
+    background-color: rgba(50, 50, 50, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    padding: .5rem;
+}
+.second .allTodos{
+    z-index: -10 !important;
+}
+.users .section{
+    height: 95%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.users .section::-webkit-scrollbar,
+.second .allTodos::-webkit-scrollbar,
+.todosList::-webkit-scrollbar{
+    display: none;
+}
+.section section,
+.stats .no-users,
+.stats .no-todos{
+    width: 120px;
+    height: 160px;
+    flex-direction: column;
+    box-shadow: 0 0 3px #333;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: .5rem ;
+}
+.section section {
+    position: relative;
+}
+.section section .img{
+    height: 75%;
+}
+.section section .name{
+    height: 25%;
+}
+.img span{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-position: center !important;
+    background-size: cover !important;
+}
+.usermodal{
+    width: 70%;
+    height: 60vh;
+    background-color: var(--section-background);
+    position: absolute;
+    top: 2rem;
+    transform: scale(0);
+    transform-origin: top left;
+    left: .4rem;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    border-radius: 10px;
+    z-index: 1000000 !important;
+    transition: all .5s ease;
+    overflow: hidden;
+}
+.usermodal.amapiano{
+    transform: scale(1);
+    z-index: 100 !important;
+}
+.usermodal .close,
+.user-modal .close{
+    font-size: 25px;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 100;
+    color: var(--accent-color);
+}
+.usermodal .profile{
+    flex-direction: column;
+    position: relative;
+}
+.profile .profilepic{
+    height: 75%;
+    /* overflow: hidden !important; */
+}
+.profile .profileDetails{
+    height: 25%;
+    flex-direction: column;
+    justify-content: space-around;
+    color: var(--text-color);
+    /* z-index: 100 !important; */
+}
+.profile .profilepic .theimage{
+    width: 80%;
+    height: 90%;
+    border-radius: 30px;
+    overflow: hidden !important;
+    object-fit: cover !important;
+    /* z-index: -100 !important; */
+}
+.theimage img{
+    width: 100%;
+    cursor: pointer;
+    height: auto;
+}
+.todosList{
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2.5rem 2rem 1rem 1rem;
+    overflow-y: scroll !important;
+    margin: .8rem 0;
+}
+.todosList ul{
+    background: yellow;
+    width: 100% !important;
+    border-radius: 4px;
+    position: relative;
+    margin: .3rem 0;
+}
+.todosList ul li{
+    list-style: none;
+    padding: 5px;
+}
+ul span{
+    position: absolute;
+    right: .8rem;
+    top: .4rem;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+ul .pending{
+    background: green;
+}
+ul .completed{
+    background: red;
+}
+.second .allTodos{
+    margin-bottom: 2rem;
+    height: auto;
+    overflow-y: scroll;
+    padding: 1.5rem 0;
+}
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+table th{
+    text-align: left;
+    background: #555;
+    padding: .5rem;
+}
+table td{
+    padding: .5rem;
+    border-bottom: 1px solid #555;
+}
+table td form button{
+    background: transparent;
+    border: 0;
+    outline: none;
+}
+table td form button i{
+    cursor: pointer;
+    transition: all .5s ease;
+}
+table td form button i:hover{
+    color: red;
+}
+.container .adminProfile{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.container .user-modal {
+	height: 60vh;
+	width: 60vw;
+    display: grid;
+	grid-template-columns: repeat(2,1fr);
+	padding: 1rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+	background-color: var(--section-background);
+    box-shadow: 0 0 5px var(--secondary-color);
+    border-radius: 20px;
+    z-index: 10;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: all 2s ease;
+}
+.container .user-modal.lupin{
+    transform: scale(1);
+}
+.user-modal .Profile{
+	grid-column: 1 / 2;
+	height: 100%;
+	border-radius: 10px;
+    background-position: center !important;
+    background-size: cover !important;
+}
+.user-modal .user-details {
+	grid-column: 2 / 3;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    color: var(--text-color);
+}
+.user-details h2 {
+	text-transform: uppercase;
+	font-size: 2.2rem;
+	text-align: center;
+	margin: 1rem;
+}
+.user-details p {
+	font-size: 1.2rem;
+	margin: 1rem;
+}
+.user-modal-btns {
+	margin: 2rem 0;
+	display: flex;
+	gap: 1.3rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.user-modal-btns a {
+	color: var(--text-color);
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 7px 16px;
+	background-color: #222;
+	border-radius: 10px;
+}
+#trash,
+#trash2{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 100 !important;
+    transition: all .5s ease;
+}
+#trash:hover{
+    color: red;
+}
+#trash2{
+    font-size: 13px !important;
+    z-index: unset !important;
+}
+.stats{
+    width: 100%;
+    height: 30vh;
+}
+.stats .no-users,
+.stats .no-todos{
+    width: 8rem;
+    height: 60%;
+    margin: 0 10rem;
+    position: relative;
+}
+.stats .no-users h3,
+.stats .no-todos h3{
+    position: absolute;
+    top: .7rem;
+    left: 6px;
+}
+.stats .no-users h1,
+.stats .no-todos h1{
+    font-size: 2.5rem;
+    padding-top: 1rem;
+}
+footer{
+    width: 100%;
+    height: 5rem;
+    background: #121212;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+footer span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer span a{
+    margin: 1%;
+    text-decoration: none;
+    transition: all 1s ease;
+    color: #fff;
+}
+footer span a:hover{
+    color: #f2c633;
+}
+small{
+    font-size: unset;
+    margin-left: 5px;
+}
+
+
+
+/* =========responsiveness ============= */
+@media only screen and (max-width:1000px){
+    .second .allTodos{
+        margin-top: 24%;
+    }
+    .usermodal{
+        width: 90%;
+        grid-template-columns: 30% 70%;
+    }
+    .profile .profilepic .theimage{
+        width: 80%;
+        height: 90%;
+        border-radius: 10px;
+    }
+    .profile .profilepic{
+        height: 70%;
+    }
+    .profile .profileDetails{
+        height: 25%;
+    }
+    .profile .profileDetails h2{
+        font-size: 15px;
+    }
+    .todosList{
+        padding: 1.5rem 4px;
+    }
+    .usermodal .close{
+        font-size: 15px;
+        right: .5rem;
+        top: .4rem;
+    }
+    .todosList ul li{
+        padding: 2px;
+        font-size: 15px;
+    }
+    .user-modal-btns {
+        gap: unset;
+        
+    }
+    .user-modal-btns a{
+        font-size: .9rem;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width:950px){
+    .user-details h2{
+        margin: .5rem;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    table{
+        width: 100%;
+    }
+    .second .allTodos,
+    .upper .users{
+        margin-top: 30%;
+    }
+}
+
+@media only screen and (max-width:830px) {
+    .stats .no-users,
+    .stats .no-todos{
+        width: 100px !important;
+        margin: 0 5rem;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .upper .users,
+    .second .allTodos{
+        width: 90%;
+    }
+    .second .allTodos{
+        margin-top: 270px !important;
+    }
+    .user-modal{
+        width: 70vw !important;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .upper .users,
+    .second .allTodos{
+        width: 95%;
+    }
+    .usermodal{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .section section{
+        width: 100px;
+        height: 140px;
+    }
+    .img span{
+        width: 90px;
+        height: 90px;
+    }
+    .section section .name{
+        font-size: 12px;
+    }
+    table{
+        font-size: 11px;
+    }
+    .users h3{
+        font-size: 13px;
+    }
+    .profile .profilepic{
+        height: 80%;
+    }
+    .profile .profileDetails{
+        height: 20%;
+    }
+    .profile .profilepic .theimage{
+        width: 100%;
+        padding: 0 5px;
+    }
+    .todosList ul li{
+        font-size: 13px;
+    }
+    ul span{
+        top: .3rem;
+        width: 12px;
+        height: 12px;
+    }
+    .user-modal{
+        width: 90vw !important;
+    }
+    .second .allTodos{
+        margin-top: 220px !important;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .usermodal{
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 60%;
+        height: 70vh;
+    }
+    .usermodal .profile{
+        flex-direction: row;
+    }
+    .profile .profilepic{
+        height: 100%;
+        width: 90%;
+        padding-top: 2px !important;
+    }
+    .profile .profilepic .theimage{
+        width: 100%;
+        height: 100%;
+    }
+    .todosList{
+        padding: 1rem .4rem;
+    }
+    .user-modal{
+        width: 95vw !important;
+        border-radius: 10px !important;
+        height: 50vh !important;
+    }
+    .user-details h2 {
+        font-size: 20px;
+    }
+    .user-details p {
+        font-size: 17px;
+    }
+    .user-modal-btns a{
+        font-size: 12px !important;
+    }
+    .container .adminProfile{
+        width: 30px;
+        height: 30px;
+    }
+    #trash{
+        position: absolute;
+        left: 50%;
+    }
+    #trash2{
+        left: 5px;
+    }
+    .stats .no-users,
+    .stats .no-todos{
+        margin: 0 auto;
+    }
+    .stats .no-users h3,
+    .stats .no-todos h3{
+        font-size: 1rem;
+    }
+    .stats .no-users h1,
+    .stats .no-todos h1{
+        font-size: 2rem;
+    }
+    .stats{
+        margin-bottom: 10rem;
+    }
+    .upper .users{
+        margin: 20rem 0 !important;
+    }
+}
+
+@media only screen and (max-width:450px){
+    .section section{
+        width: 80px;
+        height: 110px;
+    }
+    .img span{
+        width: 70px;
+        height: 70px;
+    }
+    .section section .name{
+        font-size: 11px;
+    }
+    .upper .users,
+    .second .allTodos,
+    .profile .profilepic .theimage{
+        width: 98%;
+    }
+    table{
+        font-size: 10px;
+    }
+    .todosList ul li,
+    .user-details p{
+        font-size: 15px !important;
+    }
+    .profile .profileDetails{
+        height: 50%;
+    }
+    .user-details h2{
+        font-size: 17px !important;
+    }
+    .container .user-modal{
+        height: 35vh !important;
+    }
+    .stats{
+        margin-bottom: 4rem;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .section section{
+        width: 70px;
+        height: 100px;
+    }
+    .img span{
+        width: 60px;
+        height: 60px;
+    }
+    .section section .name{
+        font-size: 10px;
+    }
+    table{
+        font-size: 9px;
+    }
+    .container .user-modal{
+        padding: 0;
+        grid-template-columns: 45% 55%;
+        overflow: hidden;
+    }
+    .user-modal .Profile{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .user-modal-btns a{
+        font-size: 10px !important;
+    }
+    .stats .no-users,
+    .stats .no-todos{
+        width: 80px !important;
+        height: 50%;
+    }
+    .stats .no-users h3,
+    .stats .no-todos h3{
+        font-size: .8rem;
+    }
+    .stats .no-users h1,
+    .stats .no-todos h1{
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width:380px){
+    .section section{
+        margin: .5rem 3px;
+    }
+    .user-details h2{
+        font-size: 15px !important;
+    }
+    .user-details p{
+        font-size: 14px !important;
+    }
+}
